@@ -1,0 +1,11 @@
+date,product,quantity,price,city
+2026-05-01,Laptop,2,1200,Marseille
+2026-05-01,Mouse,5,25,Paris
+2026-05-02,Keyboard,3,75,Lyon
+2026-05-02,Monitor,1,300,Toulouse
+2026-05-03,Laptop,1,1200,Nice
+2026-05-03,Mouse,10,25,Marseille
+2026-05-04,Keyboard,4,75,Paris
+2026-05-04,Monitor,2,300,Lille
+2026-05-05,Laptop,3,1200,Bordeaux
+2026-05-05,Mouse,7,25,Nantes

@@ -1,0 +1,26 @@
+name: Deploy Pipeline
+
+on:
+  workflow_call: {}
+  workflow_dispatch:
+
+jobs:
+  deploy-local-compose:
+    name: Deploy Docker Compose Stack
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate deployment files
+        run: |
+          test -f docker-compose-global.yml
+          test -f .env.example
+          docker compose -f docker-compose-global.yml config
+
+      - name: Deployment placeholder
+        run: |
+          echo "Deployment workflow prepared."
+          echo "For local deployment, run:"
+          echo "docker compose -f docker-compose-global.yml up -d"

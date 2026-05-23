@@ -1,0 +1,12 @@
+NAMES                IMAGE                                                STATUS        PORTS
+airflow-worker       apache/airflow:2.9.3                                 Up 12 hours   8080/tcp
+airflow-webserver    apache/airflow:2.9.3                                 Up 12 hours   0.0.0.0:8083->8080/tcp, [::]:8083->8080/tcp
+airflow-scheduler    apache/airflow:2.9.3                                 Up 12 hours   8080/tcp
+airflow-postgres     postgres:13                                          Up 12 hours   5432/tcp
+airflow-redis        redis:7.2-bookworm                                   Up 12 hours   6379/tcp
+spark-worker-1       apache/spark:3.5.1-scala2.12-java17-python3-ubuntu   Up 12 hours   0.0.0.0:8082->8081/tcp, [::]:8082->8081/tcp
+spark-master         apache/spark:3.5.1-scala2.12-java17-python3-ubuntu   Up 12 hours   0.0.0.0:7077->7077/tcp, [::]:7077->7077/tcp, 0.0.0.0:8081->8080/tcp, [::]:8081->8080/tcp
+kafka-ui             provectuslabs/kafka-ui:latest                        Up 12 hours   0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp
+kafka                confluentinc/cp-kafka:7.6.1                          Up 12 hours   0.0.0.0:9092->9092/tcp, [::]:9092->9092/tcp
+zookeeper            confluentinc/cp-zookeeper:7.6.1                      Up 12 hours   2888/tcp, 0.0.0.0:2181->2181/tcp, [::]:2181->2181/tcp, 3888/tcp
+postgres-warehouse   postgres:16                                          Up 12 hours   0.0.0.0:5432->5432/tcp, [::]:5432->5432/tcp

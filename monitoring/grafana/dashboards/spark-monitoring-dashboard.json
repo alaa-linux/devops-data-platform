@@ -1,0 +1,62 @@
+{
+  "uid": "spark-monitoring",
+  "title": "Spark Monitoring",
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "10s",
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Spark alive workers",
+      "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "spark_master_alive_workers",
+          "legendFormat": "workers"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Spark cores total / used",
+      "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "spark_master_cores_total",
+          "legendFormat": "total cores"
+        },
+        {
+          "expr": "spark_master_cores_used",
+          "legendFormat": "used cores"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Spark memory MB",
+      "gridPos": { "x": 0, "y": 8, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "spark_master_memory_total_mb",
+          "legendFormat": "total memory"
+        },
+        {
+          "expr": "spark_master_memory_used_mb",
+          "legendFormat": "used memory"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Spark running applications",
+      "gridPos": { "x": 12, "y": 8, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "spark_master_apps_running",
+          "legendFormat": "running apps"
+        }
+      ]
+    }
+  ]
+}

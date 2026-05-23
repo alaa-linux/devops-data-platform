@@ -1,0 +1,58 @@
+name: CI Pipeline
+
+on:
+  workflow_call: {}
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  validate:
+    name: Validate Project
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate Python syntax
+        run: |
+          python -m compileall \
+            airflow/dags \
+            ingestion \
+            kafka \
+            processing \
+            scripts \
+            spark/jobs \
+            warehouse/sql/etl
+
+
+      - name: Validate env example
+        run: |
+          test -f .env.example
+          grep -q "WAREHOUSE_DB_USER" .env.example
+          grep -q "AIRFLOW_DB_USER" .env.example
+
+      - name: Validate Docker Compose files
+        run: |
+          docker compose -f docker-compose-global.yml config
+          docker compose -f docker-compose-airflow.yml config
+
+      - name: Validate Kubernetes YAML
+        run: |
+          python - <<'PY'
+          import yaml
+          from pathlib import Path
+
+          for folder in ["kubernetes/rbac", "kubernetes/network-policies"]:
+              for file in Path(folder).glob("*.yaml"):
+                  with open(file) as f:
+                      yaml.safe_load(f)
+                  print(f"{file} OK")
+          PY

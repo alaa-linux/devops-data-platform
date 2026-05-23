@@ -1,0 +1,54 @@
+{
+  "uid": "airflow-monitoring",
+  "title": "Airflow Monitoring",
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "10s",
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Airflow scheduler heartbeats",
+      "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "airflow_scheduler_heartbeat",
+          "legendFormat": "scheduler heartbeat"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Airflow DAG processing",
+      "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "airflow_dag_processing_processes",
+          "legendFormat": "dag processing"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Airflow executor open slots",
+      "gridPos": { "x": 0, "y": 8, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "airflow_executor_open_slots",
+          "legendFormat": "open slots"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Airflow tasks running",
+      "gridPos": { "x": 12, "y": 8, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "airflow_executor_running_tasks",
+          "legendFormat": "running tasks"
+        }
+      ]
+    }
+  ]
+}

@@ -24,3 +24,8 @@ kubeconfig
 # OS
 .DS_Store
 Thumbs.db
+
+# Secrets
+.env
+secrets/
+warehouse/postgres/data/

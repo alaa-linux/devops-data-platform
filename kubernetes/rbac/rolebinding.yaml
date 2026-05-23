@@ -1,0 +1,15 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: readonly-rolebinding
+  namespace: devops-data-platform
+
+subjects:
+  - kind: ServiceAccount
+    name: app-readonly-sa
+    namespace: devops-data-platform
+
+roleRef:
+  kind: Role
+  name: readonly-role
+  apiGroup: rbac.authorization.k8s.io

@@ -1,0 +1,54 @@
+{
+  "uid": "host-monitoring",
+  "title": "Host Monitoring",
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "10s",
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "CPU usage host",
+      "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "100 - (avg by(instance)(rate(node_cpu_seconds_total{mode=\"idle\"}[1m])) * 100)",
+          "legendFormat": "CPU usage %"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Memory available",
+      "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "node_memory_MemAvailable_bytes",
+          "legendFormat": "Available memory"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Load average 1m",
+      "gridPos": { "x": 0, "y": 8, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "node_load1",
+          "legendFormat": "Load 1m"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Filesystem free bytes",
+      "gridPos": { "x": 12, "y": 8, "w": 12, "h": 8 },
+      "targets": [
+        {
+          "expr": "node_filesystem_free_bytes",
+          "legendFormat": "{{mountpoint}}"
+        }
+      ]
+    }
+  ]
+}

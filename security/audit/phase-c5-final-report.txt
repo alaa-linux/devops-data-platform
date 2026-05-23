@@ -1,0 +1,90 @@
+PHASE C5 — SECURITE DEVSECOPS
+=============================
+
+Statut : TERMINEE
+
+Etapes réalisées :
+
+103 — Checkov
+- Scan IaC / Docker Compose
+- Détection secrets
+- Correction hardening Docker
+- Résultat final : OK
+
+104 — Trivy
+- Installation Trivy
+- Scan image Docker Spark
+- Rapports JSON/TXT générés
+- CVE analysées
+- Résultat : OK avec vulnérabilités documentées
+
+105 — Semgrep
+- Scan SAST repository
+- Détection SQL injection potentielle
+- Correction psycopg2.sql.Identifier
+- Faux positif justifié avec nosemgrep
+- Résultat final : 0 finding
+
+106 — Bandit
+- Scan sécurité Python
+- Détection hardcoded password
+- Migration vers os.getenv
+- Résultat final : No issues identified
+
+107 — Secrets Management
+- Création .env
+- Création .env.example
+- Protection .gitignore
+- Vérification git check-ignore
+- Résultat final : secrets protégés
+
+108 — Variables env
+- Externalisation variables Docker Compose
+- Externalisation scripts Python
+- Suppression hardcoded passwords actifs
+- Résultat final : OK
+
+109 — RBAC Kubernetes
+- Namespace
+- ServiceAccount
+- Role readonly
+- RoleBinding
+- Validation YAML OK
+
+110 — Network Policies
+- Default deny ingress
+- Default deny egress
+- Allow internal namespace
+- Validation YAML OK
+
+111 — Falco Runtime Security
+- Installation Falco 0.43.1
+- Service active running
+- Healthz OK
+- Détection shell container réussie
+- Preuve sauvegardée
+
+112 — Audit Logs
+- Export logs Falco
+- Rapport audit sécurité
+- Artefacts générés
+
+113 — Security CI/CD
+- Workflow GitHub Actions security.yml
+- Semgrep CI
+- Bandit CI
+- Trivy CI
+- Validation YAML OK
+
+Artefacts principaux :
+- security/semgrep/reports/semgrep-report.json
+- security/bandit/reports/bandit-report.json
+- security/trivy/reports/
+- security/falco/falco-shell-detection.log
+- security/audit/falco-full-audit.log
+- security/audit/security-summary.txt
+- security/audit/phase-c5-final-report.txt
+- .github/workflows/security.yml
+
+Conclusion :
+La phase C5 Sécurité DevSecOps est validée.

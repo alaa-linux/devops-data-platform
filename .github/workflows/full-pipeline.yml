@@ -1,0 +1,26 @@
+name: Full CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  ci:
+    name: CI Validation
+    uses: ./.github/workflows/ci.yml
+
+  security:
+    name: Security Scans
+    uses: ./.github/workflows/security.yml
+    needs: ci
+
+  build:
+    name: Docker Build
+    uses: ./.github/workflows/build.yml
+    needs: security
+
+  deploy:
+    name: Deployment
+    uses: ./.github/workflows/deploy.yml
+    needs: build

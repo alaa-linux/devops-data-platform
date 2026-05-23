@@ -1,0 +1,29 @@
+name: Rollback Pipeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: "Image tag to rollback to, example: ci-abc1234"
+        required: true
+        type: string
+
+jobs:
+  rollback:
+    name: Rollback Docker Image Version
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Show rollback target
+        run: |
+          echo "Rollback requested to image tag: ${{ github.event.inputs.image_tag }}"
+
+      - name: Rollback instructions
+        run: |
+          echo "Update docker-compose image tags to:"
+          echo "${{ github.event.inputs.image_tag }}"
+          echo "Then redeploy with:"
+          echo "docker compose -f docker-compose-global.yml up -d"
