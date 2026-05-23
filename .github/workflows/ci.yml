@@ -41,8 +41,14 @@ jobs:
 
       - name: Validate Docker Compose files
         run: |
-          docker compose -f docker-compose-global.yml config
-          docker compose -f docker-compose-airflow.yml config
+          docker compose \
+            --env-file .env.example \
+            -f docker-compose-global.yml config
+
+          docker compose \
+            --env-file .env.example \
+            -f docker-compose-airflow.yml config
+
 
       - name: Validate Kubernetes YAML
         run: |
