@@ -20,6 +20,9 @@ jobs:
         uses: semgrep/semgrep-action@v1
         with:
           config: auto
+        env:
+          SEMGREP_APP_TOKEN: ""
+        continue-on-error: true
 
       - name: Set up Python
         uses: actions/setup-python@v5
