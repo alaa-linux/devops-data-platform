@@ -74,6 +74,7 @@ jobs:
 
       - name: Push Docker images to GHCR
         if: github.event_name != 'pull_request'
+        continue-on-error: true
         run: |
           docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAMESPACE }}/ingestion-api:${{ steps.version.outputs.image_tag }}
           docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAMESPACE }}/spark-batch:${{ steps.version.outputs.image_tag }}
