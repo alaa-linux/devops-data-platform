@@ -20,6 +20,7 @@ jobs:
         run: |
           test -f docker-compose-global.yml
           test -f .env.example
+          cp .env.example .env
           docker compose --env-file .env.example -f docker-compose-global.yml config
 
       - name: Deployment placeholder
