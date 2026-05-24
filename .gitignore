@@ -29,3 +29,5 @@ Thumbs.db
 .env
 secrets/
 warehouse/postgres/data/
+logging/elasticsearch/indices/
+logging/elasticsearch/nodes/
