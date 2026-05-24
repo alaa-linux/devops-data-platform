@@ -24,6 +24,11 @@ jobs:
         with:
           python-version: "3.12"
 
+
+      - name: Install CI dependencies
+        run: |
+          pip install PyYAML
+
       - name: Validate Python syntax
         run: |
           python -m compileall \
