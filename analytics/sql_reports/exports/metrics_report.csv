@@ -1,0 +1,4 @@
+metric_id,metric_date,component,metric_name,metric_value
+1,2026-05-01,postgres,query_time_ms,120.00
+2,2026-05-01,kafka,throughput_msg_sec,850.00
+3,2026-05-01,spark,job_duration_sec,300.00

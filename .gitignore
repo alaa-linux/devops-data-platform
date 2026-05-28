@@ -31,3 +31,21 @@ secrets/
 warehouse/postgres/data/
 logging/elasticsearch/indices/
 logging/elasticsearch/nodes/
+
+# Elasticsearch runtime data
+logging/elasticsearch/ 
+
+# Superset
+dashboards/superset/data/
+*.db
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Local python packages
+.local/
+.cache/
+
+# Jupyter
+.ipynb_checkpoints/

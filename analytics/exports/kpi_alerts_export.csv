@@ -1,0 +1,5 @@
+kpi_name,kpi_value,alert_status
+anomalies,25,CRITICAL
+duplicate_rows,180,CRITICAL
+total_nulls,0,OK
+ingestion_rows,667,OK
