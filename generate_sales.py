@@ -1,3 +1,4 @@
+import os
 import random
 import time
 from datetime import datetime
@@ -27,7 +28,7 @@ conn = psycopg2.connect(
     port=5432,
     database="warehouse",
     user="warehouse_user",
-    password="warehouse_password",
+    password=os.getenv("WAREHOUSE_DB_PASSWORD"),
 )
 
 cursor = conn.cursor()
@@ -35,10 +36,10 @@ cursor = conn.cursor()
 print("[INFO] Real-time sales generator started...")
 
 while True:
-    product = random.choice(list(products.keys())) # nosec B311
+    product = random.choice(list(products.keys()))  # nosec B311
     price = products[product]
-    quantity = random.randint(1, 10) # nosec B311
-    city = random.choice(cities) # nosec B311
+    quantity = random.randint(1, 10)  # nosec B311
+    city = random.choice(cities)  # nosec B311
     revenue = quantity * price
 
     cursor.execute(
@@ -65,7 +66,10 @@ while True:
 
     conn.commit()
 
-    print(f"[INSERTED] {datetime.now()} | {product} | {city} | qty={quantity} | revenue={revenue}")
+    print(
+        f"[INSERTED] {datetime.now()} | "
+        f"{product} | {city} | "
+        f"qty={quantity} | revenue={revenue}"
+    )
 
     time.sleep(5)
-
