@@ -72,4 +72,4 @@ while True:
         f"qty={quantity} | revenue={revenue}"
     )
 
-    time.sleep(5)
+    time.sleep(6)
