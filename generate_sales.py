@@ -35,10 +35,10 @@ cursor = conn.cursor()
 print("[INFO] Real-time sales generator started...")
 
 while True:
-    product = random.choice(list(products.keys()))
+    product = random.choice(list(products.keys())) # nosec B311
     price = products[product]
-    quantity = random.randint(1, 10)
-    city = random.choice(cities)
+    quantity = random.randint(1, 10) # nosec B311
+    city = random.choice(cities) # nosec B311
     revenue = quantity * price
 
     cursor.execute(
