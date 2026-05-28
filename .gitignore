@@ -49,3 +49,12 @@ __pycache__/
 
 # Jupyter
 .ipynb_checkpoints/
+
+# Local virtual environment
+venv/
+
+# Local backups with old credentials
+backups/
+
+# Local Checkov reports
+checkov_report.txt
